@@ -1,0 +1,13 @@
+.research/
+.DS_Store
+.playwright-mcp/
+build/
+TODO.md
+docs/research/
+docs/superpowers/
+docs/design/reference-desktop.png
+App/HerdrIOS.xcodeproj/
+Packages/HerdrKit/.build/
+Packages/HerdrKit/.swiftpm/
+*.xcresult
+xcuserdata/
