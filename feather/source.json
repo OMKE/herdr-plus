@@ -1,0 +1,30 @@
+{
+  "name": "herdr-plus",
+  "identifier": "io.github.herdr-ios.app.source",
+  "apps": [
+    {
+      "name": "Herdr",
+      "bundleIdentifier": "io.github.herdr-ios.app",
+      "developerName": "OMKE",
+      "subtitle": "Your agents, in your pocket",
+      "localizedDescription": "Unofficial iPhone client for herdr-core. Connects to your Mac over Tailscale and SSH.",
+      "iconURL": "https://raw.githubusercontent.com/OMKE/herdr-plus/main/App/Resources/Assets.xcassets/AppIcon.appiconset/icon.png",
+      "tintColor": "F5A524",
+      "version": "0.1.12",
+      "versionDate": "2026-11-10T14:25:16Z",
+      "downloadURL": "https://github.com/OMKE/herdr-plus/releases/download/v0.1.12/HerdrIOS-0.1.12.ipa",
+      "size": 13990463,
+      "versions": [
+        {
+          "version": "0.1.12",
+          "buildVersion": "12",
+          "date": "2026-11-10T14:25:16Z",
+          "downloadURL": "https://github.com/OMKE/herdr-plus/releases/download/v0.1.12/HerdrIOS-0.1.12.ipa",
+          "size": 13990463,
+          "minOSVersion": "17.0"
+        }
+      ]
+    }
+  ],
+  "news": []
+}
