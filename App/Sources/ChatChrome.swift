@@ -74,14 +74,8 @@ struct ChatHeader: View {
                 }
                 ProgramIcon(program: chat.terminal.flatMap { model.programs.program(for: $0) }, size: 30)
                 VStack(alignment: .leading, spacing: 2) {
-                    HStack(spacing: 7) {
-                        Text(title)
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundStyle(Theme.text)
-                            .lineLimit(1)
-                        if state == .blocked {
-                            NeedsYouPill()
-                        } else if let state {
+                    BarTitle(title: title, blocked: state == .blocked) {
+                        if let state {
                             Circle().fill(state == .working ? Theme.blue : state == .error ? Theme.red : Theme.green).frame(width: 7, height: 7)
                         }
                     }
@@ -176,6 +170,7 @@ struct ChatModeSwitch: View {
         .padding(2)
         .background(Capsule().fill(Theme.chromeDeep.opacity(0.7)))
         .overlay(Capsule().stroke(Theme.border))
+        .fixedSize()
     }
 }
 

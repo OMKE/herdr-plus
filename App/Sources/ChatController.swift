@@ -96,7 +96,29 @@ final class ChatController {
         loop = Task { [weak self] in await self?.run() }
     }
 
+    #if DEBUG
+    private func loadDemo() {
+        guard let t = terminal else { return }
+        let parser = ConversationParser.parse(lines: Demo.chatLines(address))
+        let blocked = t.agentState == .blocked
+        logRows = ChatRows.build(parser.items(awaitingApproval: blocked))
+        rows = logRows
+        model = parser.model
+        branch = address == "t1" ? "auth-middleware" : address == "t4" ? "rate-limit" : "main"
+        if Locator.agentKind(t) == .claude { usage = Demo.usage(address) }
+        if blocked, let a = ScreenCards.approval(Demo.approvalScreen) {
+            alwaysLabel = Self.alwaysOption(Demo.approvalScreen)
+            card = .approval(a)
+        }
+        if t.agentState == .working { activity = ScreenActivity.parse("✻ Testing… (1m 12s · ↓ 2.4k tokens)") }
+        phase = .ready
+    }
+    #endif
+
     private func run() async {
+        #if DEBUG
+        if Demo.on { loadDemo(); return }
+        #endif
         var tick = 0
         while !Task.isCancelled {
             if UIApplication.shared.applicationState != .active {

@@ -307,14 +307,8 @@ struct TabScreen: View {
             if let (space, tab) = current {
                 ProgramIcon(program: primary.flatMap { model.programs.program(for: $0) }, size: 30)
                 VStack(alignment: .leading, spacing: 2) {
-                    HStack(spacing: 7) {
-                        Text(tab.name.isEmpty ? (primary.map { model.programs.displayName(for: $0) } ?? "Tab") : tab.name)
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundStyle(Theme.text)
-                            .lineLimit(1)
-                        if state == .blocked {
-                            NeedsYouPill()
-                        } else if let state, state != .unknown, state != .idle {
+                    BarTitle(title: tab.name.isEmpty ? (primary.map { model.programs.displayName(for: $0) } ?? "Tab") : tab.name, blocked: state == .blocked) {
+                        if let state, state != .unknown, state != .idle {
                             StateDot(state: state)
                         }
                     }

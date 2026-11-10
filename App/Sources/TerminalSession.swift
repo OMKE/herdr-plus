@@ -250,6 +250,9 @@ final class TerminalSession: NSObject, TerminalViewDelegate {
     }
 
     func ensureAttached(connection: CoreConnection?, generation: Int) {
+        #if DEBUG
+        if Demo.on { return }
+        #endif
         guard let connection else { return }
         if generation == self.generation, channel != nil || status == .attaching { return }
         wantAttach = (connection, generation)
@@ -259,6 +262,16 @@ final class TerminalSession: NSObject, TerminalViewDelegate {
     private func didLayout() {
         if !laidOut {
             laidOut = true
+            #if DEBUG
+            if Demo.on {
+                status = .live
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                    guard let self else { return }
+                    self.view.feed(text: Demo.screen(self.address))
+                }
+                return
+            }
+            #endif
             if wantAttach != nil { startAttach() }
             return
         }

@@ -6,6 +6,13 @@ public struct RepoInfo: Sendable, Hashable {
     public var worktree: String?
     public var remote: String?
 
+    public init(top: String, branch: String, worktree: String?, remote: String?) {
+        self.top = top
+        self.branch = branch
+        self.worktree = worktree
+        self.remote = remote
+    }
+
     public var name: String {
         if let remote, let slug = RepoInfo.slug(remote) { return slug }
         return (top as NSString).lastPathComponent

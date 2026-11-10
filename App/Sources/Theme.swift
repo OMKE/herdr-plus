@@ -138,6 +138,38 @@ struct NeedsYouPill: View {
     }
 }
 
+struct BarTitle<Dot: View>: View {
+    let title: String
+    let blocked: Bool
+    @ViewBuilder let dot: () -> Dot
+
+    var body: some View {
+        ViewThatFits(in: .horizontal) {
+            row(full: true)
+            row(full: false)
+        }
+    }
+
+    private func row(full: Bool) -> some View {
+        HStack(spacing: 7) {
+            Text(title)
+                .font(.system(size: 16, weight: .semibold))
+                .foregroundStyle(Theme.text)
+                .lineLimit(1)
+                .fixedSize(horizontal: full, vertical: false)
+            if blocked {
+                if full {
+                    NeedsYouPill().fixedSize()
+                } else {
+                    Circle().fill(Theme.amber).frame(width: 8, height: 8).accessibilityLabel("Needs you")
+                }
+            } else {
+                dot()
+            }
+        }
+    }
+}
+
 struct Monogram: View {
     let space: Space
     var size: CGFloat = 26

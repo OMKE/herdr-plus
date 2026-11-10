@@ -169,6 +169,14 @@ public struct CoreInfo: Sendable, Hashable {
     public var version: String
     public var generation: Int
     public var features: [String]
+
+    public init(id: String, name: String, version: String, generation: Int, features: [String]) {
+        self.id = id
+        self.name = name
+        self.version = version
+        self.generation = generation
+        self.features = features
+    }
 }
 
 public struct TerminalEvent: Sendable {

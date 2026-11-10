@@ -96,6 +96,9 @@ struct OverviewView: View {
         .background(Theme.terminal.ignoresSafeArea())
         .preferredColorScheme(model.colorSchemeOverride)
         .task {
+            #if DEBUG
+            if Demo.on { Demo.fill(data, model); return }
+            #endif
             async let a: Void = data.refreshAgents(model)
             async let t: Void = data.loadTodos(model)
             _ = await (a, t)

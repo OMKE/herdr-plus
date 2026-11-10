@@ -31,11 +31,12 @@ public enum ChatRows {
                 }
                 lastTime = t
             }
-            if case .tools(let chips) = item.kind {
-                pending = chips.contains { $0.calls.contains { !$0.isDone } }
-            } else if case .status = item.kind {
-            } else {
-                pending = false
+            switch item.kind {
+            case .tools(let chips): pending = chips.contains { $0.calls.contains { !$0.isDone } }
+            case .permission: pending = true
+            case .question(let q): pending = q.state == .pending
+            case .status: break
+            default: pending = false
             }
             switch item.kind {
             case .user(let text):

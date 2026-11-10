@@ -85,6 +85,19 @@ struct OnboardingView: View {
         .onAppear {
             draft = model.settings
             if draft.ntfyTopic.isEmpty { draft.ntfyTopic = AppSettings.randomTopic() }
+            #if DEBUG
+            if let s = Demo.onboardingStep {
+                draft.ntfyTopic = "herdr-7f3k2qx9"
+                draft.host = Demo.foundMacs[0].host
+                publicKey = Demo.publicKey
+                fingerprint = "SHA256:q3Vt8mX0aKdLr2pE7nYcJwF5sH1uZgB9oTiR4vMkN6c"
+                checkLines = Demo.checkLines
+                checkPassed = true
+                reach = true
+                step = Step(rawValue: s) ?? .welcome
+                return
+            }
+            #endif
             loadKey()
         }
     }
@@ -243,7 +256,16 @@ struct OnboardingView: View {
                 }
             }
         }
-        .onAppear { if discovery.found.isEmpty { discovery.start() } }
+        .onAppear {
+            #if DEBUG
+            if Demo.on {
+                discovery.found = Demo.foundMacs
+                discovery.tailnetIP = "100.88.4.12"
+                return
+            }
+            #endif
+            if discovery.found.isEmpty { discovery.start() }
+        }
         .onDisappear { discovery.stop() }
     }
 

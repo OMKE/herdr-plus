@@ -107,6 +107,9 @@ final class AppModel {
             Task { @MainActor in self?.pathChanged(ok, kinds) }
         }
         pathMonitor.start(queue: DispatchQueue(label: "herdr.path"))
+        #if DEBUG
+        if Demo.on { Demo.load(self) }
+        #endif
     }
 
     private func pathChanged(_ ok: Bool, _ kinds: [NWInterface.InterfaceType]) {
@@ -152,6 +155,9 @@ final class AppModel {
     }
 
     func measureLatency() async {
+        #if DEBUG
+        if Demo.on { return }
+        #endif
         guard let c = connection else { latencyMs = nil; return }
         let clock = ContinuousClock()
         let start = clock.now
@@ -289,6 +295,9 @@ final class AppModel {
     }
 
     func becameActive() {
+        #if DEBUG
+        if Demo.on { return }
+        #endif
         endBackgroundTask()
         let away = backgroundedAt.map { Date().timeIntervalSince($0) } ?? 0
         backgroundedAt = nil
@@ -307,6 +316,9 @@ final class AppModel {
     }
 
     func connect() {
+        #if DEBUG
+        if Demo.on { return }
+        #endif
         guard settings.isComplete else { phase = .onboarding; return }
         connectTask?.cancel()
         connectTask = Task { [weak self] in await self?.connectLoop() }

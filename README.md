@@ -1,23 +1,44 @@
+<p align="center">
+  <img src="docs/images/screens/hero.jpg" alt="herdr-plus on iPhone and iPad">
+</p>
+
 # herdr-plus
 
 An iPhone and iPad client for [herdr-core](https://github.com/herdrdev/herdr-core). It shows the spaces, tabs and agents running on your Mac, and lets you answer them from your phone.
 
 > **Unofficial.** herdr-plus is not affiliated with, endorsed by, or supported by Herdr, Inc. It uses only herdr-core's public JSON-RPC API.
 
-<p>
-  <img src="docs/images/notification.png" width="19%" alt="Notification when an agent waits">
-  <img src="docs/images/reply.png" width="19%" alt="Replying to an agent">
-  <img src="docs/images/sidebar.png" width="19%" alt="Spaces and agents">
-  <img src="docs/images/terminal.png" width="19%" alt="Terminal">
+## Screenshots
+
+<p align="center">
+  <img src="docs/images/screens/chat.jpg" width="32%" alt="Chat with your agents">
+  <img src="docs/images/screens/approval.jpg" width="32%" alt="Approve in one tap">
+  <img src="docs/images/screens/terminal.jpg" width="32%" alt="The real terminal">
 </p>
-<p>
-  <img src="docs/images/welcome.png" width="19%" alt="Welcome">
-  <img src="docs/images/pick-mac.png" width="19%" alt="Pick your Mac">
-  <img src="docs/images/trust.png" width="19%" alt="Trust this Mac">
-  <img src="docs/images/notifications.png" width="19%" alt="Notifications setup">
+<p align="center">
+  <img src="docs/images/screens/sidebar.jpg" width="32%" alt="All your spaces">
+  <img src="docs/images/screens/overview.jpg" width="32%" alt="Usage at a glance">
+  <img src="docs/images/screens/prs.jpg" width="32%" alt="PRs and todos">
+</p>
+<p align="center">
+  <img src="docs/images/screens/light.jpg" width="32%" alt="Light, dark and themes">
+  <img src="docs/images/screens/settings.jpg" width="32%" alt="Made to fit you">
+  <img src="docs/images/screens/todos.jpg" width="32%" alt="Never lose a thought">
 </p>
 
-<sub>Screens from the design prototype (`docs/design/`). The shipped app has since been redesigned in places.</sub>
+### Setup
+
+<p align="center">
+  <img src="docs/images/screens/onboarding.jpg" alt="Setup: find your Mac, add the key, turn on notifications">
+</p>
+
+### iPad
+
+<p align="center">
+  <img src="docs/images/screens/ipad.jpg" alt="herdr-plus on iPad">
+</p>
+
+<sub>Screenshots from the app running in the iOS Simulator with made-up demo data.</sub>
 
 ## How it works
 

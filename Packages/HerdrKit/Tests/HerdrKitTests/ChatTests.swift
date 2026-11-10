@@ -39,7 +39,9 @@ private func j(_ o: [String: Any]) -> String {
     } else { Issue.record("no permission") }
     let rows = ChatRows.build(items, now: ConversationParser.parseTime("2026-11-10T12:00:00Z")!)
     #expect(rows.contains { if case .separator = $0.kind { true } else { false } })
-    #expect(rows.contains { if case .footer(let s) = $0.kind { s.contains("Worked 9s") } else { false } })
+    #expect(!rows.contains { if case .footer = $0.kind { true } else { false } })
+    let answered = ChatRows.build(Array(items.dropLast()), now: ConversationParser.parseTime("2026-11-10T12:00:00Z")!)
+    #expect(answered.contains { if case .footer(let s) = $0.kind { s.contains("Worked 9s") } else { false } })
 }
 
 @Test func claudeQuestionFromLog() {
