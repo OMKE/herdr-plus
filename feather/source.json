@@ -10,11 +10,19 @@
       "localizedDescription": "Unofficial iPhone client for herdr-core. Connects to your Mac over Tailscale and SSH.",
       "iconURL": "https://raw.githubusercontent.com/OMKE/herdr-plus/main/App/Resources/Assets.xcassets/AppIcon.appiconset/icon.png",
       "tintColor": "F5A524",
-      "version": "0.1.13",
-      "versionDate": "2026-11-12T19:48:20Z",
-      "downloadURL": "https://github.com/OMKE/herdr-plus/releases/download/v0.1.13/HerdrIOS-0.1.13.ipa",
-      "size": 13991278,
+      "version": "0.1.14",
+      "versionDate": "2026-11-12T22:23:28Z",
+      "downloadURL": "https://github.com/OMKE/herdr-plus/releases/download/v0.1.14/HerdrIOS-0.1.14.ipa",
+      "size": 13997332,
       "versions": [
+        {
+          "version": "0.1.14",
+          "buildVersion": "14",
+          "date": "2026-11-12T22:23:28Z",
+          "downloadURL": "https://github.com/OMKE/herdr-plus/releases/download/v0.1.14/HerdrIOS-0.1.14.ipa",
+          "size": 13997332,
+          "minOSVersion": "17.0"
+        },
         {
           "version": "0.1.13",
           "buildVersion": "13",
